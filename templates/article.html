@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{cc.title}}
+{% endblock %}
+
+{% block main %}
+    <div style="width: 100%; text-align: center">
+        <img src="{{cc.image}}" alt="Example Image" id="img" style="width: auto; height: 300px">
+    </div>
+    <div id="artt">
+        <h1 style="margin: 20px">{{cc.title}}</h1>
+        <p style="margin: 10px; margin-left: 20px; font-size: larger">By: {{cc.name}}</p>
+        <p style="margin: 10px; margin-left: 20px; font-size: larger">date and time: {{cc.date_n_time}}</p>
+        <hr class="solid2">
+        <p style="margin: 20px; font-size: larger">{{cc.content}}</p>
+    </div>
+    <div id="comment">
+        <div style="margin: 10px">
+            <h3 style="margin: 10px; margin-top: 20px">Comments</h3>
+            <hr class="solid3">
+        </div>
+        <form action="/comment" method="post">
+            <input autocomplete="off" id="comment_content" name="comment" placeholder="Write a new comment" style="width: 88%; height: 40px; margin-left: 10px" required>
+            <button class="btn btn-primary" type="submit" style="margin: 10px">Comment</button>
+            <input type="hidden" name="article_id" value="{{article_id}}">
+            <input type="hidden" name="person_id" value="#">
+            <input type="hidden" name="ccc" value="{{ccc}}">
+        </form>
+
+        {% for c in comment %}
+        <hr class="solid3">
+        <div id="display_comments">
+            <div id="display_content">
+                <div style="margin-right: 50px">
+                    name: {{c.name}}<br>
+                    <p>{{c.date_n_time}}</p>
+                </div>
+                <div>{{c.content}}</div>
+            </div>
+            {% endfor %}
+            <hr class="solid3">
+        </div>
+
+{% endblock %}

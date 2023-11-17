@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Contact Us
+{% endblock %}
+
+{% block main %}
+    <div id="contact_us">
+        <div id="feedback" style="width: 50%; margin: 10px">
+            <div id="contact_h">Feedback/Queries</div>
+            <hr class="solid2">
+            <form action="/form_submit" method="post">
+            <div class="form-floating" style="margin: 10px">
+                <textarea class="form-control" placeholder="Name" id="floatingTextarea" name="name"></textarea>
+                <label for="floatingTextarea">Name</label>
+              </div>
+              <div class="form-floating" style="margin: 10px">
+                <textarea class="form-control" placeholder="Email" id="floatingTextarea" name="email"></textarea>
+                <label for="floatingTextarea">Email</label>
+              </div>
+                <div class="form-floating" style="margin: 10px">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="feed"></textarea>
+                    <label for="floatingTextarea2">Comments</label>
+                  </div>
+
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                  </form>
+        </div>
+        <div id="contact" style="width: 40%">
+          <h2 style="margin-left: 10px;">Contact us</h2>
+          <hr class="solid2">
+          <h4 style="margin: 10px">Phone number: +919999999999</h4>
+          <hr class="solid2">
+          <h4 style="margin: 10px">email: info.clearview@gmail.com</h4>
+          <hr class="solid2">
+          <h4 style="margin: 10px">Address: <br></h4>
+          <p id="address" style="margin: 10px; margin-left: 50px; font-size: larger"><b>
+          Shaitan gully, <br>
+          Khatra Mehel, <br>
+          Andger Nagar, <br>
+          aur Shamshaan ke saamne </b></p>
+        </div>
+    </div>
+{% endblock %}

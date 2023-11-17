@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block main %}
+
+    <div>
+        <h2 id="latest">Results</h2>
+        <hr class="solid2">
+        <div id="no">
+        {{results}}
+        </div>
+        <div style="margin: 30px">
+          {% for card in res %}
+          <div class="card mb-3" style="max-width: 100;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{{card.image}}" class="img-fluid rounded-start" alt="..." style="height: 100%; width: 100%">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{card.title}}</h5>
+                  <p class="card-text">By: {{card.name}}</p>
+                  <p class="card-text">Preview: {{card.limited_content}}</p>
+                  <form action="/go_to_page", method="get">
+                    <input type="hidden" name="article_id" value="{{card.id}}">
+                    <button class="btn btn-primary" type="submit">Go to page</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+{% endblock %}

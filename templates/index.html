@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active" style="height: 500px">
+        <img src="static/slide_1.jpg" alt="Slide 1" style="height: 500px; width: 100%" >
+      </div>
+      <div class="carousel-item" style="height: 500px;">
+        <img src="https://igu-online.org/wp-content/uploads/2022/04/awards.png" class="d-block w-100" alt="Slide 2" style="height: 500px; width: 100%">
+      </div>
+      <div class="carousel-item" style="height: 500px;">
+        <img src="static/slide_3.jpg" class="d-block w-100" alt="Slide 3" style="height: 500px; width: 100%">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <div>
+    <h2 id="latest">Latest</h2>
+    <hr class="solid2">
+
+    <div style="margin: 30px">
+      {% for card in latest %}
+      <div class="card mb-3" style="max-width: 100;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="{{card.image}}" class="img-fluid rounded-start" alt="..." style="height: 100%; width: 100%">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{card.title}}</h5>
+              <p class="card-text">By: {{card.name}}</p>
+              <p class="card-text">Preview: {{card.limited_content}}</p>
+              <form action="/go_to_page" method="get">
+                <input type="hidden" name="article_id" value="{{card.id}}">
+                <button class="btn btn-primary" type="submit">Go to page</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
