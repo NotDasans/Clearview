@@ -5,7 +5,7 @@ from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from helpers import login_required  # lookup, usd
+from helpers import login_required  
 import json
 
 # default password for all test accounts abcd
